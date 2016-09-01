@@ -70,7 +70,7 @@
                                 </c:choose>                                
                             </c:forEach>
                         </select>
-                        <label for="cmbGrup">Alumno:</label>
+                        <label for="cmbGrup">Grupo:</label>
                     </div>
                     <div class="col s12">
                         <br/>
