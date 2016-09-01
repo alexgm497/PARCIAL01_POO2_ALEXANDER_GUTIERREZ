@@ -7,6 +7,7 @@
 package com.sv.udb.controlador;
 
 import com.sv.udb.modelo.Alumnos;
+import com.sv.udb.modelo.Grupos;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -52,7 +54,25 @@ public class AlumnosCtrl {
             final Root<Alumnos> Acce = q.from(Alumnos.class);
             q.select(Acce);
             List<Alumnos> result = em.createQuery(q).getResultList();
-            SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd-MM-yyyy");
+            for (Alumnos l : result) {
+                resp.add(new Alumnos(l.getCodiAlum(), l.getNombAlum(), l.getApelAlum(), l.getFechNaciAlum(), l.getMailAlum(), l.getTeleAlum(), l.getDireAlum(), l.getGeneAlum()));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        em.close();
+        emf.close();
+        return resp;
+    }
+    public List<Alumnos> consByCodiGrup(int codiGrup) {
+        List<Alumnos> resp = new ArrayList<>();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
+        EntityManager em = emf.createEntityManager();
+        try {
+            Query query = em.createQuery("SELECT a FROM Alumnos a INNER JOIN GruposAlumnos ga ON ga.codiAlum = a.codi_Alum WHERE ga.codiGrup = :codiGrup", Grupos.class);
+            Grupos obje = new Grupos(codiGrup);            
+            query.setParameter("codiGrup", obje);
+            List<Alumnos> result = query.getResultList();
             for (Alumnos l : result) {
                 resp.add(new Alumnos(l.getCodiAlum(), l.getNombAlum(), l.getApelAlum(), l.getFechNaciAlum(), l.getMailAlum(), l.getTeleAlum(), l.getDireAlum(), l.getGeneAlum()));
             }

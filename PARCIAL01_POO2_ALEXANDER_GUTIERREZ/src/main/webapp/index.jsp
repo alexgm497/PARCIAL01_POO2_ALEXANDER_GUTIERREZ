@@ -24,6 +24,7 @@
                 <ul id="nav-mobile" class="left hide-on-med-and-down">
                     <li><a href="Alumnos.jsp">Alumnos</a></li>
                     <li><a href="GrupoAlumnos.jsp">Grupo Alumnos</a></li>
+                    <li><a href="AlumnosPorGrupo.jsp">Grupo Alumnos</a></li>
                 </ul>
             </div>
         </nav>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="104c66b5-b6fe-42b2-a3f7-68f4637e6eb8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Grupo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT a.*, g.nomb_grup FROM alumnos a INNER JOIN grupos_alumnos ga ON ga.codi_alum = a.codi_alum INNER JOIN grupos g ON g.codi_grup = ga.codi_grup WHERE ga.codi_grup = $P{Grupo}]]>
+	</queryString>
+	<field name="codi_alum" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomb_alum" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apel_alum" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fech_naci_alum" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mail_alum" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tele_alum" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dire_alum" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gene_alum" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nomb_grup" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="14c58444-8ad2-4be9-ace6-45e7ed0daced"/>
+				<staticText>
+					<reportElement x="20" y="20" width="135" height="43" forecolor="#FFFFFF" uuid="cc9b8709-62da-42be-b3c2-1bd164276aae"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Grrupo:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="163" y="20" width="372" height="43" forecolor="#FFFFFF" uuid="9b563d58-0e57-48c6-897e-35a366e1babf"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nomb_grup}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="d7575252-9d58-499f-a37e-1c42328b6257"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="0" width="69" height="20" forecolor="#0066CC" uuid="a5d18035-fa35-4315-90a1-36e781651825"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="69" y="0" width="69" height="20" forecolor="#0066CC" uuid="55af6e01-1cb4-4f2a-9c5c-aef7ce46d1cd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="69" height="20" forecolor="#0066CC" uuid="12740134-7b87-4e3f-9ba4-2d3ebbc998c9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellidos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="0" width="69" height="20" forecolor="#0066CC" uuid="afd80fc3-5730-4d53-a714-9daddf652cbf"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nacimiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="276" y="0" width="69" height="20" forecolor="#0066CC" uuid="35c50945-a2ce-47cc-bcf5-f78263111cbd"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="0" width="69" height="20" forecolor="#0066CC" uuid="d3bbefef-2cee-4344-9525-b07bec8f8942"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="414" y="0" width="69" height="20" forecolor="#0066CC" uuid="9bd74bd6-f504-4c05-88e0-c6f3e66d6aba"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dirección]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="483" y="0" width="69" height="20" forecolor="#0066CC" uuid="5ea9a154-e43f-4c00-8563-db30584dc923"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Genero]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="1497bc9f-0495-4a89-bef3-512155f64a4c"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="69" height="20" uuid="c12be87f-388c-4b49-9794-6954e274095c"/>
+				<textFieldExpression><![CDATA[$F{codi_alum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="69" y="0" width="69" height="20" uuid="e324575c-c014-4e14-8387-7216198a0273"/>
+				<textFieldExpression><![CDATA[$F{nomb_alum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="69" height="20" uuid="f5232e76-8da8-4621-86b5-124ad6146a77"/>
+				<textFieldExpression><![CDATA[$F{apel_alum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="207" y="0" width="69" height="20" uuid="1ea01125-a4c7-442b-a878-db98806b2a64"/>
+				<textFieldExpression><![CDATA[$F{fech_naci_alum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="69" height="20" uuid="c2ec35d8-e9f5-4b10-b4da-a3fb86f3ca9f"/>
+				<textFieldExpression><![CDATA[$F{mail_alum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="345" y="0" width="69" height="20" uuid="3238fe9d-373a-41d4-9472-8329db1998b7"/>
+				<textFieldExpression><![CDATA[$F{tele_alum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="69" height="20" uuid="405ec884-1784-4850-8e31-b943462ecd15"/>
+				<textFieldExpression><![CDATA[$F{dire_alum}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="483" y="0" width="69" height="20" uuid="4d399bdb-31c9-4889-8d9b-125ff7f39341"/>
+				<textFieldExpression><![CDATA[$F{gene_alum}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="e7cef33e-8f16-4007-abb6-b3a403de569d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="ca8dd8ac-7f0c-42e2-b262-09a763d1ae21"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="06827597-7178-4178-9c44-152d65465ca4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -34,31 +34,14 @@
         <br/>
         <br/>
         <div class="container">
-            <center><h2 class="teal-text text-lighten-2">Mantenimiento de grupo-alumnos</h2></center>
+            <center><h2 class="teal-text text-lighten-2">Alumnos por grupo</h2></center>
             <br/>
             <center><h3 class="teal-text text-lighten-2">${mensAlert}</h3></center>
             <br/>
             <div class="row">
-                <form name="DatosForm" method="POST" action="GrupAlumServ" class="col s12">                    
-                    <jsp:useBean id="beanAlumCtrl" class="com.sv.udb.controlador.AlumnosCtrl" scope="page"/>
-                    <jsp:useBean id="beanGrupCtrl" class="com.sv.udb.controlador.GruposCtrl" scope="page"/>
-                    <input type="hidden" name="codiGrupAlum" value="${codiGrupAlum}"/>
-                    <div class="input-field col s6">                    
-                        <select name="cmbAlum">
-                            <c:forEach items="${beanAlumCtrl.consTodo()}" var="fila">
-                                <c:choose>
-                                    <c:when test="${fila.codiAlum== cmbAlum}">
-                                        <option value="${fila.codiAlum}" selected>${fila.nombAlum} ${fila.apelAlum}</option>                                      
-                                    </c:when>
-                                    <c:otherwise>
-                                        <option value="${fila.codiAlum}">${fila.nombAlum} ${fila.apelAlum}</option>                                      
-                                    </c:otherwise>
-                                </c:choose>                                
-                            </c:forEach>
-                        </select>
-                        <label for="cmbAlum">Alumno:</label>
-                    </div>
-                    <div class="input-field col s6">                    
+                <form name="DatosForm" method="POST" action="AlumnosGrupoServ" class="col s12">
+                    <jsp:useBean id="beanGrupCtrl" class="com.sv.udb.controlador.GruposCtrl" scope="page"/>                    
+                    <div class="input-field col s12">                    
                         <select name="cmbGrup">
                             <c:forEach items="${beanGrupCtrl.consTodo()}" var="fila">
                                 <c:choose>
@@ -71,23 +54,52 @@
                                 </c:choose>                                
                             </c:forEach>
                         </select>
-                        <label for="cmbGrup">Grupo:</label>
+                        <label for="cmbGrup">Seleccione un grupo:</label>
                     </div>
                     <div class="col s12">
                         <br/>
                         <center>
-                            <c:choose>
-                                <c:when test="${opConsulta == 1}">
-                                    <input class="btn waves-effect waves-light disabled" type="submit" name="cursBton" value="Guardar"/>                                     
-                                </c:when>
-                                <c:otherwise>
-                                    <input class="btn waves-effect waves-light" type="submit" name="cursBton" value="Guardar"/>                                                      
-                                </c:otherwise>
-                            </c:choose>
+                            <input class="btn waves-effect waves-light" type="submit" name="cursBton" value="Consultar"/>
                         </center>
                         <br/>
                     </div>
-                    
+                </form>
+                <form method="POST" action="Reporte.jsp" class="col s12">
+                    <input type="hidden" name="codigoGrupo" value="${codigoGrupo}"/>
+                    <jsp:useBean id="beanAlumnosCtrl" class="com.sv.udb.controlador.AlumnosCtrl" scope="page"/>
+                    <table border="1" class="striped">
+                        <thead>
+                            <tr>
+                                <th class="card-panel teal lighten-2">Nombre</th>
+                                <th class="card-panel teal lighten-2">Apellidp</th>
+                                <th class="card-panel teal lighten-2">Nacimiento</th>
+                                <th class="card-panel teal lighten-2">Correo</th>
+                                <th class="card-panel teal lighten-2">Teléfono</th>
+                                <th class="card-panel teal lighten-2">Dirección</th>
+                                <th class="card-panel teal lighten-2">Genero</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${beanAlumnosCtrl.consByCodiGrup(codigoDeGrupo)}" var="fila">
+                                <tr>
+                                    <td><c:out value="${fila.nombAlum}"></c:out></td>
+                                    <td><c:out value="${fila.apelAlum}"></c:out></td>
+                                    <td><c:out value="${fila.fechNaciAlum}"></c:out></td>
+                                    <td><c:out value="${fila.mailAlum}"></c:out></td>
+                                    <td><c:out value="${fila.teleAlum}"></c:out></td>
+                                    <td><c:out value="${fila.direAlum}"></c:out></td>
+                                    <td><c:out value="${fila.geneAlum}"></c:out></td>
+                                    </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <div class="col s12">
+                        <center>
+                            <input class="btn waves-effect waves-light" type="submit" name="cursBton" value="Imprimir"/>
+                        </center>
+                    </div>
+                    <br/>
                 </form>                
             </div>
         </div>
@@ -95,9 +107,9 @@
         <script type="text/javascript" src="js/materialize.min.js"></script>
         <script type="text/javascript" src="js/materialize.js"></script>
         <script>
-                                        $(document).ready(function() {
-                                            $('select').material_select();
-                                        });
+            $(document).ready(function() {
+                $('select').material_select();
+            });
         </script>
         <script>
             $('.datepicker').pickadate({

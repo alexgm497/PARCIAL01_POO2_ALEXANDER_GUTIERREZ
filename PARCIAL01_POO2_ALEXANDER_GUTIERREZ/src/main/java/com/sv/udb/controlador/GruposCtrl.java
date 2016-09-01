@@ -42,13 +42,13 @@ public class GruposCtrl {
         emf.close();
         return resp;
     }
-    public Grupos cons(int idAcce) {
+    public Grupos cons(int codiGrup) {
         Grupos resp = null;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
         EntityManager em = emf.createEntityManager();
         try {
             TypedQuery<Grupos> query = em.createNamedQuery("Grupos.findByCodiGrup", Grupos.class);
-            query.setParameter("codiGrup", idAcce);
+            query.setParameter("codiGrup", codiGrup);
             List<Grupos> result = query.getResultList();
             for (Grupos l : result) {
                 resp = new Grupos(l.getCodiGrup());
