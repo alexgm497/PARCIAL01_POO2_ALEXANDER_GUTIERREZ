@@ -41,7 +41,7 @@
                 <form name="DatosForm" method="POST" action="GrupAlumServ" class="col s12">                    
                     <jsp:useBean id="beanAlumCtrl" class="com.sv.udb.controlador.AlumnosCtrl" scope="page"/>
                     <jsp:useBean id="beanGrupCtrl" class="com.sv.udb.controlador.GruposCtrl" scope="page"/>
-                    <input type="hidden" name="codigrupAlum" value="${codiGrupAlum}"/>
+                    <input type="hidden" name="codiGrupAlum" value="${codiGrupAlum}"/>
                     <div class="input-field col s6">                    
                         <select name="cmbAlum">
                             <c:forEach items="${beanAlumCtrl.consTodo()}" var="fila">

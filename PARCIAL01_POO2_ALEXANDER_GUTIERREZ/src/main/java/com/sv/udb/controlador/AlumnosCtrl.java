@@ -14,6 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -54,6 +55,24 @@ public class AlumnosCtrl {
             SimpleDateFormat formatoDeFecha = new SimpleDateFormat("dd-MM-yyyy");
             for (Alumnos l : result) {
                 resp.add(new Alumnos(l.getCodiAlum(), l.getNombAlum(), l.getApelAlum(), l.getFechNaciAlum(), l.getMailAlum(), l.getTeleAlum(), l.getDireAlum(), l.getGeneAlum()));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        em.close();
+        emf.close();
+        return resp;
+    }
+    public Alumnos cons(int idAlum) {
+        Alumnos resp = null;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
+        EntityManager em = emf.createEntityManager();
+        try {
+            TypedQuery<Alumnos> query = em.createNamedQuery("Alumnos.findByCodiAlum", Alumnos.class);
+            query.setParameter("codiAlum", idAlum);
+            List<Alumnos> result = query.getResultList();
+            for (Alumnos l : result) {
+                resp = new Alumnos(l.getCodiAlum());
             }
         } catch (Exception ex) {
             ex.printStackTrace();

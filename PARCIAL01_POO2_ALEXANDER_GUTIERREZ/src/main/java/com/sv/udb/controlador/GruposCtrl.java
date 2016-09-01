@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -33,6 +34,24 @@ public class GruposCtrl {
             List<Grupos> result = em.createQuery(q).getResultList();
             for (Grupos l : result) {
                 resp.add(new Grupos(l.getCodiGrup(), l.getNombGrup(), l.getFechInicGrup(), l.getFechFinaGrup(), l.getHoraInicGrup(), l.getHoraFinaGrup()));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        em.close();
+        emf.close();
+        return resp;
+    }
+    public Grupos cons(int idAcce) {
+        Grupos resp = null;
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
+        EntityManager em = emf.createEntityManager();
+        try {
+            TypedQuery<Grupos> query = em.createNamedQuery("Grupos.findByCodiGrup", Grupos.class);
+            query.setParameter("codiGrup", idAcce);
+            List<Grupos> result = query.getResultList();
+            for (Grupos l : result) {
+                resp = new Grupos(l.getCodiGrup());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
