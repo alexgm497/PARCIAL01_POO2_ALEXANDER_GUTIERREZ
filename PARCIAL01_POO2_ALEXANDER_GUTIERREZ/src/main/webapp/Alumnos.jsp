@@ -109,7 +109,7 @@
                         <thead>
                             <tr>
                                 <th class="card-panel teal lighten-2">Nombre</th>
-                                <th class="card-panel teal lighten-2">Apellidp</th>
+                                <th class="card-panel teal lighten-2">Apellido</th>
                                 <th class="card-panel teal lighten-2">Nacimiento</th>
                                 <th class="card-panel teal lighten-2">Correo</th>
                                 <th class="card-panel teal lighten-2">Teléfono</th>
